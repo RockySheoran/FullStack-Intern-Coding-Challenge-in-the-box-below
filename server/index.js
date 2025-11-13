@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
-const { testConnection } = require('./config/database');
+const { testConnection } = require('./src/config/database');
 require('dotenv').config({ path: '../.env' });
 
 const app = express();
@@ -15,10 +15,10 @@ app.use(cors({
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
-const authRoutes = require('./routes/auth');
-const adminRoutes = require('./routes/admin');
-const storeRoutes = require('./routes/stores');
-const ratingRoutes = require('./routes/ratings');
+const authRoutes = require('./src/routes/auth');
+const adminRoutes = require('./src/routes/admin');
+const storeRoutes = require('./src/routes/stores');
+const ratingRoutes = require('./src/routes/ratings');
 
 app.use('/api/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
